@@ -5,10 +5,16 @@ import "./Weather.css";
 
 export default function Weather() {
   const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+  const [weatherData, setWeatherData] = useState({});
   function handleResponse(response) {
     console.log(response.data);
-    setTemperature(response.data.temperature.current);
+    setWeatherData({
+      temperature: response.data.temperature.current,
+      description: response.data.weather[0].description,
+      iconUrl: "https://cdn-icons-png.flaticon.com/128/414/414825.png",
+      city: response.data.name,
+    });
+
     setReady(true);
   }
 
@@ -32,20 +38,20 @@ export default function Weather() {
 
         <div className="row">
           <div className="col-6 text-start">
-            <h1>Perth</h1>
+            <h1>{weatherData.city}</h1>
             <ul>
               <li>Friday 13:00</li>
-              <li>Humidity 13%</li>
+              <li>{weatherData.description}</li>
             </ul>
           </div>
 
           <div className="col-6">
             <img
               className="w-25"
-              src="https://cdn-icons-png.flaticon.com/128/4814/4814268.png"
-              alt="sunny"
+              src={weatherData.iconUrl}
+              alt={weatherData.description}
             ></img>
-            {temperature}°C
+            {Math.round(weatherData.temperature)}°C
           </div>
         </div>
 
