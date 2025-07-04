@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "./Weather.css";
 
@@ -14,35 +15,41 @@ export default function Weather() {
   if (ready) {
     return (
       <div className="Weather">
-        <div className="col-12">
-          <form>
+        <div className="col-12 pb-3">
+          <form className="d-flex justify-content-between align-items-center">
             <input
               type="search"
               placeholder="Enter a city.."
-              className="search-form"
+              className="search-form col-9"
             />
-            <input type="button" value="Search" className="btn primary-btn" />
+            <input
+              type="button"
+              value="Search"
+              className="btn primary-btn button col-3"
+            />
           </form>
         </div>
 
         <div className="row">
-          <div className="col-6">
+          <div className="col-6 text-start">
             <h1>Perth</h1>
             <ul>
-              <li>Thursday 13:00</li>
-              <li>Sunny</li>
+              <li>Friday 13:00</li>
+              <li>Humidity 13%</li>
             </ul>
           </div>
 
           <div className="col-6">
             <img
+              className="w-25"
               src="https://cdn-icons-png.flaticon.com/128/4814/4814268.png"
               alt="sunny"
             ></img>
             {temperature}°C
           </div>
         </div>
-        <footer>
+
+        <footer className="mt-3">
           This was coded by{" "}
           <a
             href="https://github.com/Ami0480"
