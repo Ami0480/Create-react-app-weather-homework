@@ -60,13 +60,20 @@ export default function Weather() {
           </a>{" "}
           and is{" "}
           <a
-            href="https://github.com/Ami0480/React-Weather-Search-Homework/tree/main/my-app"
+            href="https://github.com/Ami0480/Create-react-app-weather-homework"
             target="_blank"
             rel="noopener noreferrer"
           >
             open-sourced on GitHub
           </a>{" "}
-          and <a href="/">hosted on Netlify</a>.
+          and{" "}
+          <a
+            href="https://musical-rabanadas-41fa54.netlify.app"
+            target="_blank"
+          >
+            hosted on Netlify
+          </a>
+          .
         </footer>
       </div>
     );
