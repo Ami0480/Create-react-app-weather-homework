@@ -3,22 +3,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "./Weather.css";
 
-export default function Weather() {
-  const [ready, setReady] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
+export default function Weather(props) {
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     console.log(response.data);
     setWeatherData({
+      ready: true,
       temperature: response.data.temperature.current,
-      description: response.data.weather[0].description,
+      weather: response.data.condition.description,
+      humidity: response.data.temperature.humidity,
       iconUrl: "https://cdn-icons-png.flaticon.com/128/414/414825.png",
-      city: response.data.name,
+      city: response.data.city,
     });
-
-    setReady(true);
   }
 
-  if (ready) {
+  if (weatherData.ready) {
     return (
       <div className="Weather">
         <div className="col-12 pb-3">
@@ -41,15 +40,16 @@ export default function Weather() {
             <h1>{weatherData.city}</h1>
             <ul>
               <li>Friday 13:00</li>
-              <li>{weatherData.description}</li>
+              <li>Humidity: {weatherData.humidity}%</li>
             </ul>
           </div>
 
           <div className="col-6">
+            <p>{weatherData.weather}</p>
             <img
               className="w-25"
               src={weatherData.iconUrl}
-              alt={weatherData.description}
+              alt={weatherData.condition}
             ></img>
             {Math.round(weatherData.temperature)}°C
           </div>
@@ -85,8 +85,8 @@ export default function Weather() {
     );
   } else {
     let apiKey = "fbef01f4et1b02o0d25c27210a43ef3f";
-    let city = "Perth";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading..";
