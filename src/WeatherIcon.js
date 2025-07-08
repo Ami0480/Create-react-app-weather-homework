@@ -23,10 +23,13 @@ const codeMapping = {
 };
 
 export default function WeatherIcon(props) {
+  const iconType = codeMapping[props.code];
+  console.log("Icon code:", props.code, "Mapped to:", iconType);
+
   return (
     <ReactAnimatedWeather
       icon={codeMapping[props.code]}
-      color="#000000"
+      color="blue"
       size={36}
       animated={true}
     />
