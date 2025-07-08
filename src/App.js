@@ -14,7 +14,7 @@ function App() {
             <a
               href="https://github.com/Ami0480"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
             >
               Ami Fukuyama
             </a>{" "}
@@ -22,7 +22,7 @@ function App() {
             <a
               href="https://github.com/Ami0480/Create-react-app-weather-homework"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
             >
               open-sourced on GitHub
             </a>{" "}
@@ -30,6 +30,7 @@ function App() {
             <a
               href="https://musical-rabanadas-41fa54.netlify.app"
               target="_blank"
+              rel="noreferrer"
             >
               hosted on Netlify
             </a>

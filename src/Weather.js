@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
 import WeatherInfo from "./WeatherInfo";
+import WeatherForcast from "./WeatherForcast";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "./Weather.css";
@@ -60,6 +60,7 @@ export default function Weather(props) {
           </form>
         </div>
         <WeatherInfo data={weatherData} />
+        <WeatherForcast />
       </div>
     );
   } else {
