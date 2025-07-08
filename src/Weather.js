@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import WeatherInfo from "./WeatherInfo";
-
-import WeatherForcast from "./WeatherForcast";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "./Weather.css";
@@ -25,9 +22,10 @@ export default function Weather(props) {
   }
 
   function search() {
-    let apiKey = "fbef01f4et1b02o0d25c27210a43ef3f";
+    let apiKey = "a710bd8bd76400c9658ef649d9e81728";
+    let city = "Perth";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?city=${city}&key=${apiKey}`;
 
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
 
@@ -60,9 +58,19 @@ export default function Weather(props) {
               className="btn primary-btn button col-3"
             />
           </form>
+
+          <h1>Perth</h1>
+          <ul>
+            <li>Thursday 13:00</li>
+            <li>Humidity:80%</li>
+          </ul>
+          <div classNmae="row">
+            <div className="col-6">
+              <img src="/" alt="Mostly Cloudy" />
+              6C
+            </div>
+          </div>
         </div>
-        <WeatherInfo data={weatherData} />
-        <WeatherForcast coordinates={weatherData.coordinates} />
       </div>
     );
   } else {
